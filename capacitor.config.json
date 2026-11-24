@@ -1,0 +1,9 @@
+{
+  "appId": "com.familycall.app",
+  "appName": "Family Call",
+  "webDir": "www",
+  "server": {
+    "url": "https://family-call-d4581.web.app",
+    "cleartext": false
+  }
+}
