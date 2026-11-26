@@ -26,11 +26,11 @@ jobs:
           npm install @capacitor/core @capacitor/cli @capacitor/android
           npx cap add android
 
-      - name: Add audio plugin and permissions
+      - name: Add native code and permissions
         run: |
           DIR=android/app/src/main/java/com/familycall/app
-          cp native/AudioRoutePlugin.java native/MainActivity.java "$DIR/"
-          sed -i '/android.permission.INTERNET/a \    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />\n    <uses-permission android:name="android.permission.CAMERA" />' android/app/src/main/AndroidManifest.xml
+          cp native/*.java "$DIR/"
+          python3 native/patch_manifest.py
           npx cap sync android
 
       - name: Build APK
